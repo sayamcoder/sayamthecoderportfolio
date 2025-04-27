@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Update Title -->
+    <title>My Skills - Sayamdev</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="browser-window">
+        <div class="website-container">
+            <div class="background-glow"></div>
+
+             <header class="main-header">
+                <div class="logo-area">
+                     <img src="logo.svg" alt="Site Logo" class="logo-img">
+                    <span class="developer-name">Sayamcoder</span>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <!-- Set 'Skills' to active -->
+                        <li><a href="about.html">About me</a></li>
+                        <li><a href="skills.html" class="active">Skills</a></li>
+                        <li><a href="index.html">Projects</a></li>
+                        <li><a href="source.html">Source Code</a></li>
+                    </ul>
+                </nav>
+                <div class="social-media">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                 <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                 </button>
+            </header>
+
+            <!-- Main content for the Skills page -->
+            <main class="content-page">
+                <h1>My Skills</h1>
+                <p>
+                    Here is my skills:
+                </p>
+
+                <h2>Development</h2>
+                <ul>
+                    <li>Minecraft Developer ---> 2.6 year</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>Discord Developer ---> 1.6 Year</li>
+                    <li>Plugin Developer ----> 1.4 Year</li>
+                    <li></li>
+                    <li>Vue.js (Familiar)</li>
+                    <li>State Management (Redux, Zustand, NgRx)</li>
+                    <li>UI Libraries (Material UI, Bootstrap, Tailwind CSS)</li>
+                </ul>
+
+                <h2>My Devolped Minecraft Server</h2>
+                <ul>
+                    <li>CelestailMc</li>
+                    <li>PrimeMc</li>
+                    <li>HeroSmp</li>
+                    <li>DarklandsSmp</li>
+                </ul>
+
+                 <h2>DevOps & Cloud</h2>
+                <ul>
+                    <li>Git, GitHub Actions, CI/CD</li>
+                    <li>Docker</li>
+                    <li>AWS (EC2, S3, Lambda, RDS, API Gateway)</li>
+                    <li>Vercel, Netlify</li>
+                </ul>
+
+                 <h2>Other Tools & Practices</h2>
+                <ul>
+                    <li>Agile Methodologies (Scrum)</li>
+                    <li>Unit & Integration Testing (Jest, React Testing Library)</li>
+                    <li>Figma (for design collaboration)</li>
+                </ul>
+
+            </main>
+            <!-- End of Skills page content -->
+
+        </div>
+    </div>
+     <script>
+        // Copy the SAME script block here
+        const toggleButton = document.querySelector('.mobile-nav-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        const navLinks = document.querySelectorAll('.main-nav a');
+
+        if (toggleButton && mainNav) {
+            toggleButton.addEventListener('click', () => {
+                 const isActive = mainNav.classList.toggle('active');
+                toggleButton.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('active')) {
+                         mainNav.classList.remove('active');
+                         toggleButton.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

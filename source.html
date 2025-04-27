@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Update Title -->
+    <title>Source Code - Sayamcoder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="browser-window">
+        <div class="website-container">
+            <div class="background-glow"></div>
+
+             <header class="main-header">
+                <div class="logo-area">
+                     <img src="logo.svg" alt="Site Logo" class="logo-img">
+                    <span class="developer-name">Sayamcoder</span>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <!-- Set 'Source Code' to active -->
+                        <li><a href="about.html">About me</a></li>
+                        <li><a href="skills.html">Skills</a></li>
+                        <li><a href="index.html">Projects</a></li>
+                        <li><a href="source.html" class="active">Source Code</a></li>
+                    </ul>
+                </nav>
+                <div class="social-media">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                 <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                 </button>
+            </header>
+
+            <!-- Main content for the Source Code page -->
+            <main class="content-page">
+                <h1>Source Code</h1>
+                <p>
+                    I believe in open collaboration and sharing knowledge. You can find the source code for many of my personal projects and contributions on my GitHub profile.
+                </p>
+                <p>
+                   Feel free to explore, fork, or contribute!
+                </p>
+                 <ul>
+                    <li>
+                        <strong>GitHub Profile:</strong> <a href="https://github.com/sayamcoder" target="_blank" rel="noopener noreferrer">github.com/sayamcoder</a>
+                    </li>
+                     <li>
+                        <strong>Project A Repository:</strong> <a href="https://github.com/your-github-username/project-a" target="_blank" rel="noopener noreferrer">View Project A Code</a> - [Brief description of Project A]
+                    </li>
+                     <li>
+                        <strong>Project B Repository:</strong> <a href="https://github.com/your-github-username/project-b" target="_blank" rel="noopener noreferrer">View Project B Code</a> - [Brief description of Project B]
+                    </li>
+                     <li>
+                        <strong>Portfolio Website Code:</strong> <a href="https://github.com/your-github-username/portfolio-website" target="_blank" rel="noopener noreferrer">View Portfolio Code</a> - (The code for this very website!)
+                    </li>
+                     <!-- Add more links as needed -->
+                </ul>
+
+            </main>
+            <!-- End of Source Code page content -->
+
+        </div>
+    </div>
+     <script>
+        // Copy the SAME script block here
+        const toggleButton = document.querySelector('.mobile-nav-toggle');
+        const mainNav = document.querySelector('.main-nav');
+         const navLinks = document.querySelectorAll('.main-nav a');
+
+        if (toggleButton && mainNav) {
+            toggleButton.addEventListener('click', () => {
+                 const isActive = mainNav.classList.toggle('active');
+                toggleButton.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+             navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('active')) {
+                         mainNav.classList.remove('active');
+                         toggleButton.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

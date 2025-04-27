@@ -1,0 +1,554 @@
+/* Add this to your existing style.css */
+
+.content-page {
+    padding: 60px 50px; /* Consistent padding for content areas */
+    position: relative; /* Keep above glow */
+    z-index: 5;
+    min-height: 500px; /* Give content pages some minimum height */
+    color: var(--text-primary); /* Default text color for content pages */
+}
+
+.content-page h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem); /* Slightly smaller than hero */
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+    border-bottom: 3px solid var(--accent-highlight); /* Underline title */
+    padding-bottom: 10px;
+    display: inline-block; /* Make border fit content */
+}
+
+.content-page p,
+.content-page ul,
+.content-page li {
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 800px; /* Limit text width for readability */
+    margin-bottom: 20px;
+}
+
+.content-page ul {
+    list-style: disc; /* Example list style */
+    padding-left: 30px; /* Indent list */
+}
+
+.content-page a { /* Style links within content */
+    color: var(--accent-highlight);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.content-page a:hover {
+    text-decoration: underline;
+}
+
+
+/* Make sure all previous styles for header, body, browser-window, etc. REMAIN */
+/* --- Global Styles & Resets --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-outer-start: #3a1c71;
+    --bg-outer-mid: #5f3191;
+    --bg-outer-end: #9949c1;
+    --bg-main: #0a0118; /* Very dark purple/black */
+    --text-primary: #ffffff;
+    --text-secondary: #c0c0c0; /* Light grey */
+    --text-tertiary: #e0e0e0;
+    --accent-glow-bright: rgba(240, 200, 255, 0.7); /* Brighter pink/purple */
+    --accent-glow-mid: rgba(180, 100, 255, 0.5); /* Medium purple */
+    --accent-highlight: #a37eff; /* Highlight color for text */
+    --accent-button-start: #8a2be2; /* Button gradient start */
+    --accent-button-end: #a37eff; /* Button gradient end */
+    --nav-link-color: #c0c0c0;
+    --nav-link-active: #ffffff;
+    --nav-highlight-color: #e0a0ff; /* Underline and hover */
+    --glass-bg: rgba(20, 5, 40, 0.3); /* Darker purple tint for glass */
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --tech-icon-bg: rgba(255, 255, 255, 0.05);
+    --tech-icon-bg-hover: rgba(255, 255, 255, 0.1);
+    --grid-line-color: rgba(255, 255, 255, 0.07);
+    --star-color: rgba(255, 255, 255, 0.6);
+
+    --font-main: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-main);
+    background: linear-gradient(135deg, var(--bg-outer-start), var(--bg-outer-mid), var(--bg-outer-end));
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align window to top */
+    min-height: 100vh;
+    padding: 40px 20px; /* Spacing around the browser window */
+    color: var(--text-secondary);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* --- Browser Window Container --- */
+.browser-window {
+    width: 100%;
+    max-width: 1400px; /* Adjust max width as needed */
+    background-color: var(--bg-main);
+    border-radius: 15px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0,0,0,0.2); /* Softer, larger shadow for depth */
+    overflow: hidden; /* Essential */
+    position: relative; /* Positioning context for glow */
+    margin-top: 20px; /* Add some margin at the top */
+    margin-bottom: 20px; /* Add some margin at the bottom */
+}
+
+.website-container {
+    position: relative; /* Context for absolute children */
+    z-index: 1; /* Content above background glow */
+    min-height: 700px; /* Ensure minimum height */
+    /* Starry Background */
+    background-image:
+        radial-gradient(circle, var(--star-color) 0.5px, transparent 0.5px),
+        radial-gradient(circle, var(--star-color) 0.4px, transparent 0.4px);
+    background-size: 40px 40px, 60px 60px; /* Two sizes for variation */
+    background-position: 0 0, 30px 30px; /* Offset positions */
+    background-repeat: repeat;
+}
+
+/* --- Background Glow Effect --- */
+.background-glow {
+    position: absolute;
+    top: -15%; /* Start slightly above the header */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110%; /* Wider than container */
+    height: 450px; /* Adjust height */
+    background: radial-gradient(ellipse at 50% 0%, /* Ellipse starting from top center */
+        var(--accent-glow-bright) 0%,
+        var(--accent-glow-mid) 40%,
+        rgba(10, 1, 24, 0) 75% /* Fade to transparent dark */
+    );
+    filter: blur(45px); /* Significant blur for softness */
+    z-index: 0; /* Behind all content */
+    pointer-events: none; /* Prevent interaction */
+}
+
+/* --- Header --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    position: relative; /* Ensure it's above the glow */
+    z-index: 10;
+    /* Glassmorphism */
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Safari */
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between logo and name */
+}
+
+.logo-img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain; /* Prevent distortion */
+    /* background: var(--accent-button-start); */ /* Placeholder BG if image fails */
+    border-radius: 50%;
+}
+/* Placeholder style if using div instead of img */
+.logo-placeholder {
+    height: 40px;
+    width: 40px;
+    background: linear-gradient(135deg, var(--accent-button-start), var(--accent-button-end));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+
+.developer-name {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+/* --- Navigation --- */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 35px; /* Spacing between nav items */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--nav-link-color);
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    position: relative;
+}
+
+.main-nav a:hover {
+    color: var(--nav-link-active);
+}
+
+.main-nav a.active {
+    color: var(--nav-link-active);
+    font-weight: 500;
+}
+
+/* Underline effect */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Position slightly below text */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--nav-highlight-color);
+    transition: width 0.3s ease;
+    border-radius: 1px;
+}
+
+.main-nav a.active::after,
+.main-nav a:hover::after {
+    width: 60%; /* Adjust width of underline */
+}
+
+/* --- Social Media Icons --- */
+.social-media {
+    display: flex;
+    gap: 25px; /* Space between icons */
+}
+
+.social-media a {
+    color: var(--nav-link-color);
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-media a:hover {
+    color: var(--nav-highlight-color);
+    transform: scale(1.1);
+}
+
+/* Mobile Nav Toggle - Hidden on desktop */
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* --- Hero Section (Homepage Specific) --- */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 60px 100px; /* Generous padding */
+    gap: 50px;
+    position: relative;
+    z-index: 5; /* Above glow, below header potentially */
+}
+
+.hero-text-content {
+    flex-basis: 55%; /* Text takes slightly more space */
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.portfolio-badge {
+    display: inline-flex; /* Use flex for alignment */
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(138, 43, 226, 0.15); /* Subtle purple bg */
+    border: 1px solid rgba(224, 160, 255, 0.2);
+    color: var(--nav-highlight-color);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.portfolio-badge i {
+    font-size: 0.7em; /* Smaller icon */
+}
+
+.hero-text-content h1 {
+    font-size: clamp(2.5rem, 5vw, 3.8rem); /* Responsive font size */
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+.highlight-text {
+    color: var(--accent-highlight);
+}
+
+.hero-text-content p {
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 550px; /* Limit text width */
+    margin-bottom: 35px;
+}
+
+.cta-button {
+    background: linear-gradient(90deg, var(--accent-button-start), var(--accent-button-end));
+    color: var(--text-primary);
+    border: none;
+    padding: 14px 35px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.5);
+}
+
+/* --- Tech Stack (Homepage Specific) --- */
+.hero-tech-stack {
+    flex-basis: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* Add perspective for subtle 3D effect on hover */
+    animation: fadeIn 1s ease-out 0.3s forwards; /* Fade in slightly later */
+    opacity: 0; /* Start hidden for animation */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 90px); /* Fixed size columns */
+    grid-template-rows: repeat(3, 90px); /* Fixed size rows */
+    gap: 30px; /* Space between icons */
+    position: relative;
+    padding: 20px;
+     /* Faint Grid Lines */
+    background-image:
+        linear-gradient(var(--grid-line-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
+    background-size: calc(90px + 30px) calc(90px + 30px); /* Size of cell + gap */
+    background-position: center center; /* Center the grid lines */
+    /* transform: rotateX(10deg) rotateY(-10deg); */ /* Optional: Subtle 3D tilt */
+    transition: transform 0.5s ease;
+}
+
+/* Optional hover effect for grid tilt */
+/* .hero-tech-stack:hover .tech-grid {
+     transform: rotateX(0deg) rotateY(0deg);
+} */
+
+
+.tech-item {
+    background-color: var(--tech-icon-bg);
+    border-radius: 12px; /* More rounded */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem; /* Base icon size */
+    color: var(--text-tertiary);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: default; /* Indicate non-clickable */
+    box-shadow: 0 2px 5px rgba(0,0,0, 0.2);
+    aspect-ratio: 1 / 1; /* Ensure items are square */
+}
+
+.tech-item:hover {
+    transform: scale(1.1) translateZ(10px); /* Scale up and slightly forward */
+    background-color: var(--tech-icon-bg-hover);
+    box-shadow: 0 5px 15px rgba(0,0,0, 0.3);
+}
+
+/* Specific Icon Styles (Text-based) */
+.tech-item.icon-js,
+.tech-item.icon-ts {
+    font-weight: bold;
+    font-size: 1.8rem; /* Slightly smaller for text */
+}
+.tech-item span i { /* Adjust icon size within span */
+    font-size: 2.2rem;
+    display: block; /* Helps centering */
+}
+.tech-item span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* If using <img> tags inside .tech-item */
+.tech-item img {
+    width: 50%; /* Adjust size as needed */
+    height: 50%;
+    object-fit: contain;
+    filter: grayscale(30%) brightness(1.2); /* Subtle filter */
+}
+
+/* --- Responsive Design --- */
+
+@media (max-width: 1200px) {
+    .hero-section {
+        padding: 60px 40px 80px;
+    }
+    .tech-grid {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(auto-fill, 80px); /* Adjust rows automatically */
+        gap: 25px;
+        background-size: calc(80px + 25px) calc(80px + 25px);
+    }
+     .content-page {
+        padding: 50px 40px;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .main-header {
+        padding: 15px 30px;
+    }
+     /* Hide desktop nav, show toggle */
+    .main-nav {
+        display: none; /* Hide by default */
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        width: 100%;
+        background: var(--bg-main); /* Solid background for mobile */
+        padding: 20px 0;
+        border-top: 1px solid var(--glass-border);
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center links */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        z-index: 100; /* Ensure nav is above content */
+    }
+    .main-nav.active {
+        display: flex; /* Show when active */
+    }
+    .main-nav ul {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        text-align: center;
+    }
+    .main-nav a {
+        display: block; /* Make links take full width */
+        padding: 10px 0;
+    }
+     .main-nav a::after { /* Adjust underline for vertical nav */
+         bottom: 5px;
+     }
+    .social-media {
+        display: none; /* Optionally hide social links in header on mobile */
+    }
+    .mobile-nav-toggle {
+        display: block; /* Show hamburger */
+        z-index: 101; /* Above mobile nav when closed */
+    }
+
+    .hero-section {
+        flex-direction: column; /* Stack hero content */
+        text-align: center;
+        padding: 50px 30px 70px;
+        gap: 60px; /* Increase gap when stacked */
+    }
+    .hero-text-content {
+        flex-basis: 100%;
+        max-width: 600px; /* Limit width even when centered */
+    }
+     .hero-text-content p {
+        margin-left: auto;
+        margin-right: auto; /* Center paragraph */
+    }
+    .hero-tech-stack {
+        flex-basis: 100%;
+        width: 100%;
+        max-width: 400px; /* Limit grid size */
+        perspective: none; /* Remove perspective on mobile */
+    }
+    .tech-grid {
+         /* Keep 3 columns or switch to 2? Let's keep 3 but smaller */
+        grid-template-columns: repeat(3, 70px);
+        grid-template-rows: repeat(auto-fill, 70px);
+        gap: 20px;
+        background-size: calc(70px + 20px) calc(70px + 20px);
+        transform: none; /* Reset tilt on mobile */
+    }
+     .tech-item { font-size: 1.8rem; }
+     .tech-item.icon-js, .tech-item.icon-ts { font-size: 1.6rem; }
+
+    .content-page {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    body { padding: 20px 10px; }
+    .browser-window { border-radius: 10px; margin-top: 10px; margin-bottom: 10px; }
+    .main-header { padding: 15px 20px; }
+    .logo-area { gap: 8px; } /* Smaller gap */
+    .logo-img, .logo-placeholder { height: 35px; width: 35px; }
+    .developer-name { font-size: 1.1rem; }
+
+    .hero-section { padding: 40px 20px 60px; gap: 50px; }
+    .portfolio-badge { padding: 6px 14px; font-size: 0.75rem; }
+    .hero-text-content h1 { margin-bottom: 15px; }
+    .hero-text-content p { margin-bottom: 25px; }
+    .cta-button { padding: 12px 30px; font-size: 0.9rem; }
+
+    .tech-grid {
+        grid-template-columns: repeat(2, 80px); /* Switch to 2 columns */
+         /* Adjust rows if needed, or let it flow */
+        grid-template-rows: repeat(auto-fill, 80px);
+        max-width: 250px; /* Further limit grid width */
+        gap: 25px;
+        background-size: calc(80px + 25px) calc(80px + 25px);
+    }
+     .tech-item span i { font-size: 2rem; }
+     .tech-item.icon-js, .tech-item.icon-ts { font-size: 1.6rem; }
+
+    .content-page {
+        padding: 30px 20px;
+    }
+     .content-page h1 { font-size: 1.8rem; }
+     .content-page p, .content-page li { font-size: 0.95rem; }
+}
+
+
+/* --- End of style.css --- */

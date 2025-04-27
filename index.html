@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Make sure title is relevant -->
+    <title>Sayamcoder - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="browser-window">
+        <div class="website-container">
+            <div class="background-glow"></div>
+
+            <header class="main-header">
+                <div class="logo-area">
+                     <img src="logo.svg" alt="Site Logo" class="logo-img">
+                     <!-- <div class="logo-placeholder">JD</div> -->
+                    <span class="developer-name">Sayamcoder</span>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <!-- Update hrefs and remove active class -->
+                        <li><a href="about.html">About me</a></li>
+                        <li><a href="skills.html">Skills</a></li>
+                        <!-- Add active class here for index.html -->
+                        <li><a href="index.html" class="active">Projects</a></li>
+                        <li><a href="source.html">Source Code</a></li>
+                    </ul>
+                </nav>
+                <div class="social-media">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                 <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                 </button>
+            </header>
+
+            <!-- This is the main content for the homepage -->
+            <main class="hero-section">
+                <div class="hero-text-content">
+                    <span class="portfolio-badge">
+                        <i class="fas fa-star-of-life fa-xs"></i> SayamCoder Developer Portfolio
+                    </span>
+                    <h1>
+                        SayamCoder <span class="highlight-text">the best</span><br>
+                        Developer
+                    </h1>
+                    <p>
+                        Hello! I'm Sayamdev, A Minecraft,Discord,Plugin, Devolpers I have Minecraft Devolping 2.6 year Experience,I Have Discord Develping 1.6 Year,I Have Plugin Developing 1.4 Year
+                    </p>
+                    <!-- Button could link to contact or a specific project section -->
+                    <button class="cta-button">Learn more</button>
+                </div>
+
+                <div class="hero-tech-stack">
+                    <div class="tech-grid">
+                        <!-- Keep your tech icons here -->
+                         <div class="tech-item icon-react"><span><i class="fab fa-react"></i></span></div>
+                        <div class="tech-item icon-js"><span>JS</span></div>
+                        <div class="tech-item icon-figma"><span><i class="fab fa-figma"></i></span></div>
+                        <div class="tech-item icon-gem"><span><i class="fas fa-gem"></i></span></div>
+                        <div class="tech-item icon-angular"><span><i class="fab fa-angular"></i></span></div>
+                        <div class="tech-item icon-ts"><span>TS</span></div>
+                        <div class="tech-item icon-aws"><span><i class="fab fa-aws"></i></span></div>
+                        <div class="tech-item icon-git"><span><i class="fab fa-github"></i></span></div>
+                        <div class="tech-item icon-css"><span><i class="fab fa-css3-alt"></i></span></div>
+                    </div>
+                </div>
+            </main>
+            <!-- End of homepage main content -->
+
+        </div>
+    </div>
+
+    <script>
+        // Basic mobile nav toggle (keep this script)
+        const toggleButton = document.querySelector('.mobile-nav-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        const navLinks = document.querySelectorAll('.main-nav a'); // Get all nav links
+
+        if (toggleButton && mainNav) {
+            toggleButton.addEventListener('click', () => {
+                const isActive = mainNav.classList.toggle('active');
+                // Toggle icon: bars or times (X)
+                toggleButton.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+
+            // Close nav when a link is clicked (useful for single-page feel on mobile)
+             navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('active')) {
+                         mainNav.classList.remove('active');
+                         toggleButton.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Update Title -->
+    <title>About Me - Sayamcoder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="browser-window">
+        <div class="website-container">
+            <div class="background-glow"></div>
+
+             <header class="main-header">
+                <div class="logo-area">
+                     <img src="logo.svg" alt="Site Logo" class="logo-img">
+                    <span class="developer-name">Sayamcoder</span>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <!-- Set 'About me' to active -->
+                        <li><a href="about.html" class="active">About me</a></li>
+                        <li><a href="skills.html">Skills</a></li>
+                        <li><a href="index.html">Projects</a></li>
+                        <li><a href="source.html">Source Code</a></li>
+                    </ul>
+                </nav>
+                <div class="social-media">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                 <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                 </button>
+            </header>
+
+            <!-- Main content for the About page -->
+            <main class="content-page">
+                <h1>About Me</h1>
+                <p>
+                    Hello! I'm Sayamdev, A Minecraft,Discord,Plugin, Devolpers I have Minecraft Devolping 2.6 year Experience,I Have Discord Develping 1.6 Year,I Have Plugin Developing  1.4 Year
+                </p>
+                <p>
+                    I have Html,Css,Js Experience And I ma A Minecraft Player And Developer And I Playing Minecraft For 2.6 Years
+                </p>
+                <p>
+                    We Now I Developed 15+ Servers 35+ Discord Servers And I Buid 10+ Plugins  <a href="skills.html">skills</a>!
+                </p>
+                <!-- Add more paragraphs, images, etc. as needed -->
+            </main>
+            <!-- End of About page content -->
+
+        </div>
+    </div>
+    <script>
+        // Copy the SAME script block here
+        const toggleButton = document.querySelector('.mobile-nav-toggle');
+        const mainNav = document.querySelector('.main-nav');
+         const navLinks = document.querySelectorAll('.main-nav a');
+
+        if (toggleButton && mainNav) {
+            toggleButton.addEventListener('click', () => {
+                 const isActive = mainNav.classList.toggle('active');
+                toggleButton.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+             navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('active')) {
+                         mainNav.classList.remove('active');
+                         toggleButton.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
